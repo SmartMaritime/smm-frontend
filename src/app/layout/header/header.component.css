@@ -1,0 +1,40 @@
+
+.container-header {
+  height: 100%; 
+  /* background: linear-gradient(to right, #00b09b, #20aff1);  */
+  background-color: #20aff1;
+
+
+  display :flex;
+  flex-direction: row;
+}
+
+.container-header-content {
+    width:15%;
+   
+    }
+
+
+.container-header-content2 {
+    flex:1;
+  
+ 
+}
+
+.container-header-content3 {
+    width:25%;
+   }
+
+
+p{
+    font-size: 19px;
+    margin: 8px;
+    color :rgb(122, 85, 16);
+    /* padding: 10px; */
+}
+h1{font-size: 30px;
+    padding: 10px;
+    margin: 8px;
+    color :aliceblue;
+
+}

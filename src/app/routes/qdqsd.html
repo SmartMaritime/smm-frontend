@@ -1,0 +1,76 @@
+e tien : <form (submit)="find($event)">
+  <label>
+    Adresse départ :
+    <input [(ngModel)]="vale" name="vale" required />
+  </label>
+  <label>
+    Adresse arrivée :
+    <input [(ngModel)]="vale2" name="vale2" required />
+  </label>
+  <button type="submit">Trouver Ports</button>
+</form>
+
+<button (click)="estimerTrajet()">Estimer Trajet</button>
+
+<div *ngIf="error" style="color:red;">{{ error }}</div>
+
+<div *ngIf="estimation">
+  <h3>Estimation du trajet :</h3>
+  <p>Durée estimée : {{ estimation.duree_estimee }} h</p>
+  <p>Émissions CO₂ : {{ estimation.emission_co2 }} kg</p>
+  <p>Trajet : {{ estimation.port_depart.name }} → {{ estimation.port_arrivee.name }}</p>
+</div>
+
+<div
+  leaflet
+  [leafletOptions]="options"
+  [leafletLayers]="layers"
+  style="height: 500px; margin-top: 10px;"
+></div>    le mien (que je dois utiliser pour le flex)  : 
+<div class="container-routes">
+    <div class="container-routes-map">
+        <div style="height: 100%;"
+     leaflet 
+     [leafletOptions]="options">
+    </div>
+    </div>
+
+    
+
+      
+<div class="b2"> 
+        <form class="input-form" >
+        <div class="form-group">
+          <label for="portinput1">Départ</label>
+          <input [(ngModel)]="vale" name="portinput1" id="portinput1" type="text" placeholder="Ville ou port de départ" />
+        </div>
+
+        <div class="form-group">
+          <label for="portinput2">Arrivée</label>
+          <input [(ngModel)]="vale2" name="portinput2" id="portinput2" type="text" placeholder="Ville ou port d’arrivée" />
+        </div>
+
+        <button type="submit" (click)="find($event)" class="btn ">📍 Afficher sur carte</button>
+      </form>
+
+      <div class="port-info" *ngIf="portDepart || portArrivee">
+    <p *ngIf="portDepart">🟦 Départ : {{ portDepart.name }} ({{ portDepart.code }})</p>
+    <p *ngIf="portArrivee">🟥 Arrivée : {{ portArrivee.name }} ({{ portArrivee.code }})</p>
+  </div>
+
+  <button class="btn btn-estimate" >📊 Estimer le trajet</button>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="estimation" *ngIf="estimation">
+    <h3>📈 Estimation du trajet</h3>
+    <p>⏱ Durée estimée : <strong>{{ estimation.duree_estimee }} h</strong></p>
+    <p>🌿 Émissions CO₂ : <strong>{{ estimation.emission_co2 }} kg</strong></p>
+    <p>🚢 Trajet : {{ estimation.port_depart.name }} → {{ estimation.port_arrivee.name }}</p>
+  </div>
+
+
+
+    </div>
+
+</div>
